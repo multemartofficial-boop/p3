@@ -1,0 +1,262 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-workspace: var(--workspace);
+  --color-table-head: var(--table-head);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-surface-subtle: var(--surface-subtle);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.982 0.004 250);
+  --foreground: oklch(0.23 0.025 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.23 0.025 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.23 0.025 255);
+  --primary: oklch(0.30 0.10 257);
+  --primary-foreground: oklch(0.985 0.002 250);
+  --secondary: oklch(0.955 0.007 250);
+  --secondary-foreground: oklch(0.27 0.04 255);
+  --muted: oklch(0.96 0.006 250);
+  --muted-foreground: oklch(0.52 0.025 255);
+  --accent: oklch(0.935 0.018 240);
+  --accent-foreground: oklch(0.27 0.06 255);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.89 0.009 250);
+  --input: oklch(0.86 0.012 250);
+  --ring: oklch(0.48 0.10 255);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.60 0.10 185);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.975 0.006 250);
+  --sidebar-foreground: oklch(0.30 0.03 255);
+  --sidebar-primary: oklch(0.25 0.075 257);
+  --sidebar-primary-foreground: oklch(0.985 0.002 250);
+  --sidebar-accent: oklch(0.925 0.015 247);
+  --sidebar-accent-foreground: oklch(0.27 0.06 255);
+  --sidebar-border: oklch(0.88 0.01 250);
+  --sidebar-ring: oklch(0.48 0.10 255);
+  --workspace: oklch(0.971 0.006 250);
+  --table-head: oklch(0.965 0.007 250);
+  --surface-subtle: oklch(0.977 0.005 250);
+  --success: oklch(0.47 0.12 155);
+  --success-soft: oklch(0.95 0.035 155);
+  --warning: oklch(0.52 0.13 70);
+  --warning-soft: oklch(0.96 0.045 85);
+  --destructive-soft: oklch(0.96 0.03 25);
+  --shadow-print: 0 12px 30px oklch(0.25 0.02 255 / 0.08);
+  --shadow-card: 0 1px 2px oklch(0.22 0.03 255 / 0.04), 0 8px 24px oklch(0.22 0.03 255 / 0.045);
+  --shadow-header: 0 1px 8px oklch(0.22 0.03 255 / 0.05);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    font-feature-settings: "tnum" 1, "cv02" 1;
+    margin: 0;
+  }
+
+  button, a, input, select, textarea { letter-spacing: 0; }
+}
+
+@utility shadow-print {
+  box-shadow: var(--shadow-print);
+}
+
+@utility shadow-card { box-shadow: var(--shadow-card); }
+@utility shadow-header { box-shadow: var(--shadow-header); }
+
+@media (max-width: 767px) {
+  body { font-size: 16px; }
+
+  button, a, input, select, textarea { min-height: 44px; }
+
+  .mobile-action-bar {
+    position: sticky;
+    bottom: calc(4rem + env(safe-area-inset-bottom));
+    z-index: 30;
+    margin-inline: -1rem;
+    margin-bottom: -1rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-border);
+    background: color-mix(in oklch, var(--color-background) 96%, transparent);
+    box-shadow: 0 -8px 24px oklch(0.22 0.03 255 / 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .mobile-action-bar > button { flex: 1; min-height: 44px; }
+
+  [role="dialog"] { max-width: calc(100vw - 1.5rem); }
+}
+
+@page {
+  size: A4 portrait;
+  /* Zero page margin suppresses the browser's own header/footer
+     (date, title, URL, page numbers); spacing is applied on #print-document. */
+  margin: 0;
+}
+
+@media print {
+  /* Print only the document preview, not the composer/app chrome.
+     Elements that neither are nor contain #print-document are removed from
+     layout entirely (not just hidden) so a tall document paginates instead
+     of being clipped to a single page. */
+  body *:not(#print-document):not(#print-document *):not(:has(#print-document)) {
+    display: none !important;
+  }
+
+  /* Neutralise the screen layout on the ancestors of the document so the
+     preview column's grid/flex padding doesn't squeeze or offset it. */
+  *:has(#print-document) {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: #fff !important;
+  }
+
+  #print-document {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 9mm 8mm !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  /* Keep ruled table lines on paper: don't let the browser's economy mode or
+     unresolved Tailwind border variables drop cell borders when printing. */
+  #print-document,
+  #print-document * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  #print-document table,
+  #print-document tr,
+  #print-document th,
+  #print-document td {
+    border-style: solid !important;
+    border-color: #000 !important;
+  }
+
+  /* Repeat table headers on every page and keep each row on one page. */
+  #print-document thead { display: table-header-group; }
+  #print-document tfoot { display: table-footer-group; }
+  #print-document tr { break-inside: avoid; page-break-inside: avoid; }
+  #print-document table { page-break-inside: auto; }
+}
